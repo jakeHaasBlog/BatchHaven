@@ -1,0 +1,51 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(476,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(477,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (C:\Users\jak_h\Desktop\BatchHaven\build\intermediates\Debug\Win32\) contains files shared from another project (CrossFill.vcxproj, Raycasting.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  FrameRateTimer.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\FrameRateTimer.cpp(21,38): warning C4018: '<': signed/unsigned mismatch
+  Geometry.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Geometry.cpp(92,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Geometry.cpp(120,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Geometry.cpp(121,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Geometry.cpp(313,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Geometry.cpp(320,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Geometry.cpp(321,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Geometry.cpp(322,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  RenderList.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(107,10): warning C4101: 'array2': unreferenced local variable
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(108,10): warning C4101: 'array3': unreferenced local variable
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(106,10): warning C4101: 'array1': unreferenced local variable
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(156,113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(156,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(188,116): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(188,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(308,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(330,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(331,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(362,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(406,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(413,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\RenderList.cpp(467,27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  RenderListLine.cpp
+  Ruler.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Ruler.cpp(153,58): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Ruler.cpp(154,59): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Ruler.cpp(155,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Ruler.cpp(156,54): warning C4305: 'argument': truncation from 'double' to 'float'
+  Source.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(79,65): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(112,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(113,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(125,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(127,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(143,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(144,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(181,13): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(182,13): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(185,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(188,101): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\jak_h\Desktop\BatchHaven\build\Debug\Win32\vc120.pdb'; linking object as if no debug info
+  BatchHaven.vcxproj -> C:\Users\jak_h\Desktop\BatchHaven\build\Debug\Win32\BatchHaven.exe
