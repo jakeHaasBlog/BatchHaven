@@ -85,9 +85,31 @@ int main(int argc, char** argv) {
 	Texture myTex = Texture("assets/test.png");
 
 	RenderList myList;
-	myList.setTextureSlot(0, &myTex);
+	myList.setTextureSlot(3, &myTex);
 
 	Ruler rul = Ruler(30, 50);
+
+	Texture renderTexture = Texture(1000, 1000);
+	std::vector<std::array<float, 4>> pix = renderTexture.getPixels();
+	for (int i = 0; i < pix.size(); i++) {
+		pix[i] = { (float)i / pix.size(), 1, 1, 1 };
+	}
+	renderTexture.generateFromData(1000, 1000, &pix[0][0]);
+
+	RenderList trl;
+	{
+		float x = 500, y = 500, r = 44000;
+		trl.addEllipse(500, 500, 500, 1, 0, 0, 1);
+		for (int i = 0; i < 10; i++) {
+			trl.addEllipse(x, y, r, i / 10, i / 5, 1.0f - i / 10.0f, 1);
+			x += (((float)rand() / RAND_MAX) * 2.0f - 1.0f) * 40;
+			y += (((float)rand() / RAND_MAX) * 2.0f - 1.0f) * 40;
+			r -= 40.0f;
+		}
+	}
+
+	trl.renderToTexture(&renderTexture);
+
 
 	glfwSwapInterval(1);
 	int x = 0;
@@ -112,10 +134,10 @@ int main(int argc, char** argv) {
 				float r = sinf(circleItter);
 				float g = cosf(circleItter);
 				float b = 1.0f - r;
-				int c = myList.addEllipse(x, y, circleRad, r / 5, g / 5, b / 5);
-				if (circleItter % 5 == 0) {
-					myList.getEllipse(c)->setZ(0.4f);
-				}
+				//int c = myList.addEllipse(x, y, circleRad, r / 5, g / 5, b / 5);
+				//if (circleItter % 5 == 0) {
+				//	myList.getEllipse(c)->setZ(0.4f);
+				//}
 				circleItter++;
 			}
 		}
@@ -125,10 +147,10 @@ int main(int argc, char** argv) {
 				float g = cosf(circleItter);
 				float r = 1.0f - g;
 				float b = sinf(circleItter);
-				int c = myList.addEllipse(x, y, circleRad, r / 5, g / 5, b / 5, 0.3f);
-				if (circleItter % 2 == 0) {
-					myList.getEllipse(c)->setZ(0.4f);
-				}
+				//int c = myList.addEllipse(x, y, circleRad, r / 5, g / 5, b / 5, 0.3f);
+				//if (circleItter % 2 == 0) {
+				//	myList.getEllipse(c)->setZ(0.4f);
+				//}
 				circleItter++;
 			}
 		}
@@ -188,12 +210,16 @@ int main(int argc, char** argv) {
 		myList.addLine(fx, fy, fx + cosf(rads * 0.5f) * 300, fy + sinf(rads * 0.5f) * 300, 50, 0.4, 1, 0.4);
 		myList.getLine(myList.getLastLine())->setThicknessA(30);
 		myList.getLine(myList.getLastLine())->setThicknessB(60);
-		//int e = myList.addEllipse(0, 0, 1, 1, 0, 0);
-		//myList.getEllipse(e)->setBoundsAlongLineSeqment(fx, fy, fx + cosf(rads * 0.5f) * 300, fy + sinf(rads * 0.5f) * 300, 50);
+		int e = myList.addEllipse(0, 0, 1, 1, 0, 0);
+		myList.getEllipse(e)->setBoundsAlongLineSeqment(fx, fy, fx + cosf(rads * 0.5f) * 300, fy + sinf(rads * 0.5f) * 300, 50);
 		
 		rul.addToRenderList(myList);
+
+
+		myList.setTextureSlot(3, &renderTexture);
+		myList.addQuad(2000, 200, 500, 500, 3);
+
 		
-		//myList.addRenderList(blah);
 		myList.render();
 		
 		
