@@ -23,6 +23,7 @@
 #include "Ruler.h"
 
 #include "Geometry.h"
+#include "PerlinNoiseGenerator.h"
 
 float v = 1.0f;
 SoundData* soundEffect = nullptr;
@@ -82,34 +83,74 @@ int main(int argc, char** argv) {
 	soundEffect->saveToFile("assets/doorOpening.wav");
 
 
-	Texture myTex = Texture("assets/test.png");
-
 	RenderList myList;
-	myList.setTextureSlot(3, &myTex);
+	PerlinNoiseGenerator g;
+	g.setOctaves(3);
+	g.setScaleX(0.03f);
+	g.setScaleY(0.03f);
+	g.setOctaves(20);
+	Texture myTex = Texture("assets/test.png");
+	Texture myTex2 = Texture("assets/nature.jpg");
 
-	Ruler rul = Ruler(30, 50);
 
-	Texture renderTexture = Texture(1000, 1000);
-	std::vector<std::array<float, 4>> pix = renderTexture.getPixels();
-	for (int i = 0; i < pix.size(); i++) {
-		pix[i] = { (float)i / pix.size(), 1, 1, 1 };
+	auto data = myTex.getPixels();
+	for (int x = 0; x < myTex.getWidth(); x++) {
+		for (int y = 0; y < myTex.getHeight(); y++) {
+
+			float val = g.getValueAt(x, y);
+
+			data[x + y * myTex.getWidth()][0] = val;
+			data[x + y * myTex.getWidth()][1] = val;
+			data[x + y * myTex.getWidth()][2] = val;
+			data[x + y * myTex.getWidth()][3] = 1.0f;
+		}
 	}
-	renderTexture.generateFromData(1000, 1000, &pix[0][0]);
+	auto newData = data;
 
-	RenderList trl;
-	{
-		float x = 500, y = 500, r = 44000;
-		trl.addEllipse(500, 500, 500, 1, 0, 0, 1);
-		for (int i = 0; i < 10; i++) {
-			trl.addEllipse(x, y, r, i / 10, i / 5, 1.0f - i / 10.0f, 1);
-			x += (((float)rand() / RAND_MAX) * 2.0f - 1.0f) * 40;
-			y += (((float)rand() / RAND_MAX) * 2.0f - 1.0f) * 40;
-			r -= 40.0f;
+	int sampleAreaX = 30;
+	int sampleAreaY = 30;
+	for (int x = 0; x < myTex.getWidth(); x++) {
+		for (int y = 0; y < myTex.getHeight(); y++) {
+
+			float total = 0.0f;
+			for (int x1 = -sampleAreaX / 2; x1 < sampleAreaX / 2; x1++) {
+				for (int y1 = -sampleAreaY / 2; y1 < sampleAreaY / 2; y1++) {
+					if (!(x + x1 < 0 || x + x1 >= myTex.getWidth() || y + y1 < 0 || y + y1 >= myTex.getHeight())) {
+						total += data[(x + x1) + (y + y1) * myTex.getWidth()][0];
+					}
+				}
+			}
+			total /= sampleAreaX * sampleAreaY;
+
+			newData[x + y * myTex.getWidth()][0] = total;
+			newData[x + y * myTex.getWidth()][1] = total;
+			newData[x + y * myTex.getWidth()][2] = total;
+
 		}
 	}
 
-	trl.renderToTexture(&renderTexture);
+	for (int x = 0; x < myTex.getWidth(); x++) {
+		for (int y = 0; y < myTex.getHeight(); y++) {
 
+			float val = newData[x + y * myTex.getWidth()][0];
+
+			val *= 10.0f;
+			val = (int)val;
+			val /= 10;
+
+			newData[x + y * myTex.getWidth()][0] = val;
+			newData[x + y * myTex.getWidth()][1] = val;
+			newData[x + y * myTex.getWidth()][2] = val;
+			
+			newData[x + y * myTex.getWidth()][3] = 1.0f;
+		}
+	}
+
+	myTex.generateFromData(myTex.getWidth(), myTex.getHeight(), &newData[0][0]);
+
+	myList.setTextureSlot(0, &myTex);
+	int a = myList.addQuad(0, 0, Window::getWidth(), Window::getHeight(), 0);
+	myList.getQuad(a)->setTextureSampleArea(-1, -1, 2, 2);
 
 	glfwSwapInterval(1);
 	int x = 0;
@@ -125,101 +166,17 @@ int main(int argc, char** argv) {
 
 		Window::update();
 
-		myList.clear();
-		
-		float circleRad = 100;
-		int circleItter = 0;
-		for (float x = 0; x < Window::getWidth(); x += circleRad) {
-			for (float y = Window::getHeight(); y > -circleRad; y -= circleRad) {
-				float r = sinf(circleItter);
-				float g = cosf(circleItter);
-				float b = 1.0f - r;
-				//int c = myList.addEllipse(x, y, circleRad, r / 5, g / 5, b / 5);
-				//if (circleItter % 5 == 0) {
-				//	myList.getEllipse(c)->setZ(0.4f);
-				//}
-				circleItter++;
-			}
-		}
-		
-		for (float x = 0; x < Window::getWidth(); x += circleRad) {
-			for (float y = Window::getHeight(); y > -circleRad; y -= circleRad) {
-				float g = cosf(circleItter);
-				float r = 1.0f - g;
-				float b = sinf(circleItter);
-				//int c = myList.addEllipse(x, y, circleRad, r / 5, g / 5, b / 5, 0.3f);
-				//if (circleItter % 2 == 0) {
-				//	myList.getEllipse(c)->setZ(0.4f);
-				//}
-				circleItter++;
-			}
-		}
-
-		float lx = Window::getWidth() / 2;
-		float ly = Window::getHeight() / 2;
-		float lr = 0.0f, lg = 0.0f, lb = 0.0f;
-		float lWidth = 5;
-		srand(120);
-		for (int i = 0; i < 500; i++) {
-			int lin = myList.addLine(lx, ly, 0, 0, lWidth, lr, lg, lb);
-			lx += cosf(rand()) * 100;
-			ly += sinf(rand()) * 100;
-			lr = (float)rand() / RAND_MAX;
-			lg = (float)rand() / RAND_MAX;
-			lb = 1.0f - lr;
-			lWidth = ((float)rand() / RAND_MAX) * 10 + 1;
-			myList.getLine(lin)->setPositionB(lx, ly);
-			myList.getLine(lin)->setColorB(lr, lg, lb, 1.0f);
-			myList.getLine(lin)->setThicknessB(lWidth);
-		}
-		
-		// corners
-		myList.addQuad(Window::getWidth() / 2 - 25, Window::getHeight() / 2 - 25, 50, 50, 1.0f, 0.0f, 0.0f);
-		myList.addQuad(0, 0, 50, 50, 1, 0, 0);
-		int id = myList.addQuad(Window::getWidth() - 50, 0, 50, 50, 1, 0, 0);
-		myList.addQuad(Window::getWidth() - 50, Window::getHeight() - 50, 50, 50, 1, 0, 0);
-		myList.addQuad(0, Window::getHeight() - 50, 50, 50, 1, 0, 0);
-		
-		
-		static float rads = 0.0f;
-		rads += timer.getDeltaSeconds();
-		
-		myList.addEllipse(0, 0, 0, 1, 0, 0);
-		myList.getEllipse(myList.getLastEllipse())->setBoundsAlongLineSeqment(100, 300, 1000, 600, 200);
-		
-		myList.setTextureSlot(0, &myTex);
-		myList.addEllipse(500, 500, 100, 0);
-		myList.getEllipse(myList.getLastEllipse())->rotateAboutCenter(rads * 5);
-		
-		
-		float fx = 1300;
-		float fy = 800;
-		float rad = 200;
-		int n = 50;
-		float da = (3.14159f * 2.0f) / n;
-		float t = 5;
-		float r, g, b;
-		for (int i = 0; i < n; i++) {
-			r = sinf(i);
-			g = cosf(i);
-			b = 1 - r;
-			int lineI = myList.addLine(fx, fy, fx + cosf(i * da) * rad, fy + sinf(i * da) * rad, t, r, g, b);
-			myList.getLine(lineI)->setColorA(1, 1, 1, 0.3);
-		}
-		
-		myList.addLine(fx, fy, fx + cosf(rads * 0.5f) * 300, fy + sinf(rads * 0.5f) * 300, 50, 0.4, 1, 0.4);
-		myList.getLine(myList.getLastLine())->setThicknessA(30);
-		myList.getLine(myList.getLastLine())->setThicknessB(60);
-		int e = myList.addEllipse(0, 0, 1, 1, 0, 0);
-		myList.getEllipse(e)->setBoundsAlongLineSeqment(fx, fy, fx + cosf(rads * 0.5f) * 300, fy + sinf(rads * 0.5f) * 300, 50);
-		
-		rul.addToRenderList(myList);
-
-
-		myList.setTextureSlot(3, &renderTexture);
-		myList.addQuad(2000, 200, 500, 500, 3);
-
-		
+		//myList.clear();
+		//
+		//
+		//// corners
+		//myList.addQuad(Window::getWidth() / 2 - 25, Window::getHeight() / 2 - 25, 50, 50, 1.0f, 0.0f, 0.0f);
+		//myList.addQuad(0, 0, 50, 50, 1, 0, 0);
+		//int id = myList.addQuad(Window::getWidth() - 50, 0, 50, 50, 1, 0, 0);
+		//myList.addQuad(Window::getWidth() - 50, Window::getHeight() - 50, 50, 50, 1, 0, 0);
+		//myList.addQuad(0, Window::getHeight() - 50, 50, 50, 1, 0, 0);
+		//
+		//
 		myList.render();
 		
 		
