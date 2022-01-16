@@ -23,6 +23,9 @@
     <Filter Include="Source Files\engine\graphics\RenderListSubclasses">
       <UniqueIdentifier>{cf8af19a-f574-4944-bbfd-132b5256674c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\extras">
+      <UniqueIdentifier>{001c71d4-65a8-437e-b890-b47a520627b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\Source.cpp">
@@ -78,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="src\engine\Geometry.cpp">
       <Filter>Source Files\engine\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\PerlinNoiseGenerator.cpp">
+      <Filter>Source Files\extras</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +143,12 @@
     </ClInclude>
     <ClInclude Include="src\engine\Geometry.h">
       <Filter>Source Files\engine\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\PerlinNoiseGenerator.h">
+      <Filter>Source Files\extras</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\PerlinNoise-master\PerlinNoise.hpp">
+      <Filter>Source Files\extras</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

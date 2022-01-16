@@ -378,6 +378,9 @@ int RenderList::duplicateElement(int id)
 
 void RenderList::render()
 {
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glViewport(0, 0, Window::getWidth(), Window::getHeight());
+
     updateBuffers();
     bindTextures();
     
@@ -391,6 +394,26 @@ void RenderList::render()
     va->unbind();
     activeShader->unbind();
 
+}
+
+void RenderList::renderToTexture(Texture* texture)
+{
+    texture->bindAsRenderTarget();
+
+    updateBuffers();
+    bindTextures();
+
+    // set uniforms
+    defaultShader.setUniform1f("u_thicknessMultiplier", 1.0f);
+    defaultShader.setUniform2f("u_fbPixelSize", texture->getWidth(), texture->getHeight());
+
+    activeShader->bind();
+    va->bind();
+    glDrawElements(GL_TRIANGLES, ib->getCount(), GL_UNSIGNED_INT, nullptr);
+    va->unbind();
+    activeShader->unbind();
+
+    texture->unbindAsRenderTarget();
 }
 
 void RenderList::clear()

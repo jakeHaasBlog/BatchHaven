@@ -54,8 +54,10 @@ public:
 	bool removeElement(int id);
 	int duplicateElement(int id);
 
-	// will render onto the bound render target (either a texture or the window)
+	// will render onto the Window's framebuffer
 	void render();
+
+	void renderToTexture(Texture* texture);
 
 	// removes all elemments from the list
 	void clear();

@@ -36,13 +36,21 @@ Texture::Texture(int width, int height) {
 	initPixHigh = height;
 }
 
-Texture::Texture(int width, int height, float* data, size_t pixelCount) {
+Texture::Texture(int width, int height, float* data) {
 	//generateFromData(width, height, data, pixelCount);
 	initType = 3;
 	initPixWide = width;
 	initPixHigh = height;
-	initData = new float[pixelCount * 4];
-	memcpy_s(initData, sizeof(float) * pixelCount * 4, data, pixelCount * sizeof(float) * 4);
+	if (data) {
+		initData = new float[width * height * 4];
+		memcpy_s(initData, sizeof(float) * width * height * 4, data, width * height * sizeof(float) * 4);
+	}
+	else {
+		initData = new float[width * height * 4];
+		for (int i = 0; i < width * height * 4; i++) {
+			initData[i] = 0.0f;
+		}
+	}
 }
 
 Texture::Texture(const std::string& filename) {
@@ -147,7 +155,7 @@ void Texture::generateDefaultTexture(int width, int height) {
 	isInitilized = true;
 }
 
-void Texture::generateFromData(int width, int height, float* data, size_t pixelCount) {
+void Texture::generateFromData(int width, int height, float* data) {
 	initType = 3;
 
 	this->width = width;
@@ -189,6 +197,26 @@ void Texture::bind(int textureSlot) {
 
 void Texture::unbind() {
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void Texture::bindAsRenderTarget()
+{
+	tryInitialize();
+	
+	if (!frameBufferInitilaized) {
+		generateFrameBuffer();
+		frameBufferInitilaized = true;
+	}
+	
+	glBindFramebuffer(GL_FRAMEBUFFER, frameBufferID);
+	glViewport(0, 0, width, height);
+	
+}
+
+void Texture::unbindAsRenderTarget()
+{
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glViewport(0, 0, Window::getWidth(), Window::getHeight());
 }
 
 //void Texture::bindAsRenderTarget()
@@ -348,7 +376,7 @@ void Texture::tryInitialize()
 			generateDefaultTexture(initPixWide, initPixHigh);
 			break;
 		case 3: // byData
-			generateFromData(initPixWide, initPixHigh, initData, initPixCount);
+			generateFromData(initPixWide, initPixHigh, initData);
 			delete[] initData;
 			initData = nullptr;
 			break;

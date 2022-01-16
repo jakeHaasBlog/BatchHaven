@@ -22,8 +22,7 @@ public:
 	Texture(int width, int height);
 
 	// generates a texture with given data in float rgba encoding
-	// pixelCount - the number of pixels in 'data'    aka. sizeof(data) / (4 * sizeof(float))
-	Texture(int width, int height, float* data, size_t pixelCount);
+	Texture(int width, int height, float* data);
 
 	// generates texture then reads pixel data from png or jpg file into it
 	Texture(const std::string& filename);
@@ -37,7 +36,7 @@ public:
 	// generate functions will initialize an uninitialized texture or simply overwrite an existing one
 	void generateDefaultTexture(int width, int height);
 	// generate functions will initialize an uninitialized texture or simply overwrite an existing one
-	void generateFromData(int width, int height, float* data, size_t pixelCount);
+	void generateFromData(int width, int height, float* data);
 
 	// includes interpolation and clamping
 	void setDefaultTexParameters();
@@ -86,7 +85,6 @@ private:
 	int initType = 0; // 0 = none,  1 = byID,  2 = default,  3 = byData,   4 = byFile
 	int initPixWide, initPixHigh;
 	float* initData = nullptr;
-	size_t initPixCount;
 	std::string initFilepath;
 
 	void tryInitialize();

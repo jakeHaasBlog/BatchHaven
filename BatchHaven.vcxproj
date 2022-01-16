@@ -26,6 +26,7 @@
     <ClCompile Include="src\engine\KeyboardState.cpp" />
     <ClCompile Include="src\engine\MouseState.cpp" />
     <ClCompile Include="src\engine\OpenglBufferObjects.cpp" />
+    <ClCompile Include="src\engine\PerlinNoiseGenerator.cpp" />
     <ClCompile Include="src\engine\RenderList.cpp" />
     <ClCompile Include="src\engine\RenderListEllipse.cpp" />
     <ClCompile Include="src\engine\RenderListLine.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="src\engine\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="deps\PerlinNoise-master\PerlinNoise.hpp" />
     <ClInclude Include="src\engine\EventsHandle.h" />
     <ClInclude Include="src\engine\EventsManager.h" />
     <ClInclude Include="src\engine\FrameRateTimer.h" />
@@ -47,6 +49,7 @@
     <ClInclude Include="src\engine\KeyboardState.h" />
     <ClInclude Include="src\engine\MouseState.h" />
     <ClInclude Include="src\engine\OpenglBufferObjects.h" />
+    <ClInclude Include="src\engine\PerlinNoiseGenerator.h" />
     <ClInclude Include="src\engine\RenderListEllipse.h" />
     <ClInclude Include="src\engine\RenderListLine.h" />
     <ClInclude Include="src\engine\RenderListQuad.h" />
@@ -133,7 +136,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\AudioFile;$(SolutionDir)deps\stb_image;$(SolutionDir)deps\GLFW\include;$(SolutionDir)deps\GLEW\include;$(SolutionDir)deps\openal\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\PerlinNoise-master;$(SolutionDir)deps\AudioFile;$(SolutionDir)deps\stb_image;$(SolutionDir)deps\GLFW\include;$(SolutionDir)deps\GLEW\include;$(SolutionDir)deps\openal\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -166,7 +169,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\AudioFile;$(SolutionDir)deps\stb_image;$(SolutionDir)deps\GLFW\include;$(SolutionDir)deps\GLEW\include;$(SolutionDir)deps\openal\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\PerlinNoise-master;$(SolutionDir)deps\AudioFile;$(SolutionDir)deps\stb_image;$(SolutionDir)deps\GLFW\include;$(SolutionDir)deps\GLEW\include;$(SolutionDir)deps\openal\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
