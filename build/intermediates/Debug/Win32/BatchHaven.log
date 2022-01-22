@@ -1,5 +1,25 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(476,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(477,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (C:\Users\jak_h\Desktop\BatchHaven\build\intermediates\Debug\Win32\) contains files shared from another project (CrossFill.vcxproj, Raycasting.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  MazeGenerator.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\MazeGenerator.cpp(28,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\MazeGenerator.cpp(55,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\MazeGenerator.cpp(56,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\MazeGenerator.cpp(121,31): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\MazeGenerator.cpp(121,52): warning C4018: '>=': signed/unsigned mismatch
   PerlinNoiseGenerator.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\PerlinNoiseGenerator.cpp(10,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\PerlinNoiseGenerator.cpp(25,27): warning C4244: 'argument': conversion from 'double' to 'uint32_t', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\PerlinNoiseGenerator.cpp(31,27): warning C4244: 'argument': conversion from 'double' to 'uint32_t', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\PerlinNoiseGenerator.cpp(36,12): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\PerlinNoiseGenerator.cpp(83,109): warning C4244: 'argument': conversion from 'double' to 'int32_t', possible loss of data
+  Source.cpp
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(81,65): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(101,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(101,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jak_h\Desktop\BatchHaven\src\engine\Source.cpp(139,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\jak_h\Desktop\BatchHaven\build\Debug\Win32\vc120.pdb'; linking object as if no debug info
   BatchHaven.vcxproj -> C:\Users\jak_h\Desktop\BatchHaven\build\Debug\Win32\BatchHaven.exe

@@ -24,6 +24,7 @@
 
 #include "Geometry.h"
 #include "PerlinNoiseGenerator.h"
+#include "MazeGenerator.h"
 
 float v = 1.0f;
 SoundData* soundEffect = nullptr;
@@ -152,6 +153,10 @@ int main(int argc, char** argv) {
 	int a = myList.addQuad(0, 0, Window::getWidth(), Window::getHeight(), 0);
 	myList.getQuad(a)->setTextureSampleArea(-1, -1, 2, 2);
 
+	MazeGenerator mg(60, 30);
+	RenderList mazeList;
+
+
 	glfwSwapInterval(1);
 	int x = 0;
 	while (!glfwWindowShouldClose(Window::getHandle())) {
@@ -178,6 +183,13 @@ int main(int argc, char** argv) {
 		//
 		//
 		myList.render();
+
+		mazeList.clear();
+		//mg = MazeGenerator(30, 30);
+		//mg.fullyGenerate();
+		mg.itterateGeneration();
+		mg.appendToRenderList(mazeList, 100, 100, Window::getWidth() - 200, Window::getHeight() - 200);
+		mazeList.render();
 		
 		
 		static int frame = 0;

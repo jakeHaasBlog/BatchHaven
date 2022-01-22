@@ -24,6 +24,7 @@
     <ClCompile Include="src\engine\GamepadState.cpp" />
     <ClCompile Include="src\engine\Geometry.cpp" />
     <ClCompile Include="src\engine\KeyboardState.cpp" />
+    <ClCompile Include="src\engine\MazeGenerator.cpp" />
     <ClCompile Include="src\engine\MouseState.cpp" />
     <ClCompile Include="src\engine\OpenglBufferObjects.cpp" />
     <ClCompile Include="src\engine\PerlinNoiseGenerator.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="src\engine\GamepadState.h" />
     <ClInclude Include="src\engine\Geometry.h" />
     <ClInclude Include="src\engine\KeyboardState.h" />
+    <ClInclude Include="src\engine\MazeGenerator.h" />
     <ClInclude Include="src\engine\MouseState.h" />
     <ClInclude Include="src\engine\OpenglBufferObjects.h" />
     <ClInclude Include="src\engine\PerlinNoiseGenerator.h" />

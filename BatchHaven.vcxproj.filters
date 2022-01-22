@@ -85,6 +85,9 @@
     <ClCompile Include="src\engine\PerlinNoiseGenerator.cpp">
       <Filter>Source Files\extras</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\MazeGenerator.cpp">
+      <Filter>Source Files\extras</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\EventsManager.h">
@@ -144,10 +147,13 @@
     <ClInclude Include="src\engine\Geometry.h">
       <Filter>Source Files\engine\utilities</Filter>
     </ClInclude>
+    <ClInclude Include="deps\PerlinNoise-master\PerlinNoise.hpp">
+      <Filter>Source Files\extras</Filter>
+    </ClInclude>
     <ClInclude Include="src\engine\PerlinNoiseGenerator.h">
       <Filter>Source Files\extras</Filter>
     </ClInclude>
-    <ClInclude Include="deps\PerlinNoise-master\PerlinNoise.hpp">
+    <ClInclude Include="src\engine\MazeGenerator.h">
       <Filter>Source Files\extras</Filter>
     </ClInclude>
   </ItemGroup>
